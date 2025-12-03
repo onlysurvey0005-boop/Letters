@@ -1,13 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parcel Vanilla App</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Parcel Vanilla App</h1>
-    <p>Edit <code>src/index.html</code> to get started!</p>
-  </body>
+    <title>{page title goes here}</title>
+    <link rel="stylesheet" href="./style.css"></link>
+</head>
+<body>
+    <div class="container">
+        <div id="mainView">
+            <div class="header">
+                <div class="heart-icon">❤️</div>
+                <h1>{place holder title}</h1>
+                <p class="subtitle">A letter for each day I'm away ❤️</p>
+                <div class="day-counter" id="dayCounter"></div>
+            </div>
+
+            <div class="envelopes" id="envelopes"></div>
+
+            <div class="footer-quote">
+                "Distance means so little when someone means so much" 💕
+            </div>
+        </div>
+
+        <div id="gameView" class="game-view">
+            <div class="game-card" id="gameCard">
+                <div class="game-content">
+                    <div class="game-header">
+                        <h2>Unlock Day <span id="gameDay"></span></h2>
+                        <p class="game-instructions">Guess the 5-letter word to unlock your love letter!</p>
+                        <div class="hint-section" id="hintSection"></div>
+                    </div>
+
+                    <div id="guessesContainer"></div>
+
+                    <div class="keyboard" id="keyboard"></div>
+
+                    <div class="attempts" id="attemptsText">Attempts: <span id="attemptCount">0</span>/6</div>
+                    <div class="message" id="gameMessage"></div>
+
+                    <div class="game-back-btn">
+                        <button class="back-btn" onclick="closeGame()">Back to letters</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="letterView" class="letter-view">
+            <div class="letter-card" id="letterCard">
+                <div class="letter-content">
+                    <div class="letter-header">
+                        <div class="letter-title-section">
+                            <h2 id="letterTitle"></h2>
+                            <p class="letter-day" id="letterDay"></p>
+                        </div>
+                        <button class="close-btn" onclick="closeLetter()">×</button>
+                    </div>
+                    
+                    <div class="letter-text" id="letterText"></div>
+
+                    <div class="letter-heart">❤️</div>
+                </div>
+            </div>
+
+            <div class="back-btn-container">
+                <button class="back-btn" onclick="closeLetter()">Back to all letters</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./play.js"></script>
+</body>
 </html>
