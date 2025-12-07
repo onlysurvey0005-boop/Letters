@@ -1,4 +1,4 @@
-mport { letters, wordPuzzles } from "./letters.js"
+import { letters, wordPuzzles } from "./letters.js"
 
 
 
