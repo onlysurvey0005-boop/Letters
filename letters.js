@@ -19,7 +19,7 @@ export const letters = [
             },
             {
                 day: 4,
-                title: "Day 4:MOst of the time you tell me a word",
+                title: "Day 4:Most of the time you tell me a word",
                 content: `Alazya.`,
                 color: "gradient-4"
             },
