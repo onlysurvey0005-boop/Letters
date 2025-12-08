@@ -24,7 +24,7 @@ function calculateCurrentDay() {
     const now = new Date();
     const diffTime = Math.abs(now - START_DATE);
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    currentDay = Math.min(diffDays + 1, 8);
+    currentDay = Math.min(diffDays + 1, 5);
 }
 
 function isUnlocked(day) {
