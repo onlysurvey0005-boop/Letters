@@ -2,7 +2,9 @@ export const letters = [
             {
                 day: 1,
                 title: "Day 1: The first thing I adore about you",
-                content: `Attitude.`,
+                content: `You don’t even realise how your presence changes my whole mood.  
+    The first thing I truly love about you is the way you carry yourself — your attitude, your calmness, your spark.  
+    Really you are a princess my mankidi..`,
                 color: "gradient-1"
             },
             {
