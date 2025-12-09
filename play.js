@@ -310,16 +310,6 @@ export function openCelebration() {
     playMusic();
 }
 
-    document.getElementById('mainView').style.display = 'none';
-    document.getElementById('letterView').style.display = 'none';
-    document.getElementById('celebrationView').style.display = 'block';
-
-    // Start all effects
-    startConfettiFireworks();
-    startFloatingHearts();
-    playMusic();
-}
-
 // 🎉 Close Celebration
 export function closeCelebration() {
     document.getElementById('celebrationView').style.display = 'none';
