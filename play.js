@@ -65,9 +65,18 @@ function renderEnvelopes() {
 
         container.appendChild(envelope);
     });
+   // 🎉 Show celebration button when all 5 letters unlocked
+if (Object.keys(unlockedLetters).length === 5) {
+    const btn = document.createElement('button');
+    btn.textContent = "🎉 Tap for a Surprise 🎉";
+    btn.className = "celebration-btn";
+   btn.onclick = openCelebration;
+container.appendChild(btn);
+
+ 
 
     let unlockedCount = Object.keys(unlockedLetters).length;
-    document.getElementById('dayCounter').textContent = unlockedCount + ' of ' + Math.min(currentDay, 8) + ' letters unlocked';
+    document.getElementById('dayCounter').textContent = unlockedCount + ' of ' + Math.min(currentDay, 5) + ' letters unlocked';
 }
 
 function startGame(letter) {
@@ -276,3 +285,83 @@ document.addEventListener('keydown', function(e) {
 window.closeGame = closeGame
 window.openLetter = openLetter
 window.closeLetter = closeLetter
+// 🎉 Open Celebration
+export function openCelebration() {
+    document.getElementById('mainView').style.display = 'none';
+    document.getElementById('letterView').style.display = 'none';
+    document.getElementById('celebrationView').style.display = 'block';
+
+    // Start all effects
+    startConfettiFireworks();
+    startFloatingHearts();
+    playMusic();
+}
+
+// 🎉 Close Celebration
+export function closeCelebration() {
+    document.getElementById('celebrationView').style.display = 'none';
+    document.getElementById('mainView').style.display = 'block';
+}
+
+// ❤️ Floating Hearts
+function startFloatingHearts() {
+    const container = document.getElementById('heartsContainer');
+    container.innerHTML = '';
+
+    setInterval(() => {
+        let heart = document.createElement('div');
+        heart.textContent = '❤️';
+        heart.style.left = Math.random() * 90 + 'vw';
+        heart.style.bottom = '0';
+        container.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 5000);
+    }, 500);
+}
+
+// 🔥 Fireworks Effect
+function startConfettiFireworks() {
+    const canvas = document.getElementById('fireworksCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function firework() {
+        let x = Math.random() * canvas.width;
+        let y = Math.random() * canvas.height / 2;
+
+        for (let i = 0; i < 50; i++) {
+            let angle = Math.random() * Math.PI * 2;
+            let speed = Math.random() * 5 + 2;
+            let vx = Math.cos(angle) * speed;
+            let vy = Math.sin(angle) * speed;
+
+            let r = Math.floor(Math.random() * 255);
+            let g = Math.floor(Math.random() * 255);
+            let b = Math.floor(Math.random() * 255);
+
+            (function drawParticle() {
+                ctx.fillStyle = `rgb(${r},${g},${b})`;
+                ctx.fillRect(x, y, 3, 3);
+
+                x += vx;
+                y += vy;
+                vy += 0.03;
+
+                if (y < canvas.height) requestAnimationFrame(drawParticle);
+            })();
+        }
+    }
+
+    setInterval(firework, 600);
+}
+
+// 🎵 Play Music
+function playMusic() {
+    const music = document.getElementById('bgMusic');
+    music.volume = 0.4;
+    music.play().catch(() => {
+        console.log('User interaction required to start music.');
+    });
+}
+
