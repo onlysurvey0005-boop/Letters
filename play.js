@@ -38,10 +38,10 @@ function renderEnvelopes() {
     letters.forEach(function(letter) {
         let isAvailable = letter.day <= currentDay;
         let isLetterUnlocked = unlockedLetters[letter.day];
-        
+
         let envelope = document.createElement('div');
         envelope.className = 'envelope ' + (isLetterUnlocked ? 'unlocked ' + letter.color : 'locked');
-        
+
         if (isAvailable && !isLetterUnlocked) {
             envelope.onclick = function() {
                 startGame(letter);
@@ -54,29 +54,33 @@ function renderEnvelopes() {
         }
 
         let icon = isLetterUnlocked ? '✉️' : (isAvailable ? '🎮' : '🔒');
-        let subtitle = isLetterUnlocked ? 'Click to read' : (isAvailable ? 'Play to unlock' : 'Available on day ' + letter.day);
+        let subtitle = isLetterUnlocked
+            ? 'Click to read'
+            : (isAvailable ? 'Play to unlock' : 'Available on day ' + letter.day);
 
-        envelope.innerHTML = '<div class="envelope-left"><div class="envelope-icon">' + 
-            icon + 
-            '</div><div><div class="envelope-title">Day ' + letter.day + 
-            '</div><div class="envelope-subtitle">' + subtitle + 
-            '</div></div></div>' + 
+        envelope.innerHTML =
+            '<div class="envelope-left"><div class="envelope-icon">' +
+            icon +
+            '</div><div><div class="envelope-title">Day ' + letter.day +
+            '</div><div class="envelope-subtitle">' + subtitle +
+            '</div></div></div>' +
             (isLetterUnlocked ? '<div class="heart-small">❤️</div>' : '');
 
         container.appendChild(envelope);
     });
-   // 🎉 Show celebration button when all 5 letters unlocked
-if (Object.keys(unlockedLetters).length === 5) {
-    const btn = document.createElement('button');
-    btn.textContent = "🎉 Tap for a Surprise 🎉";
-    btn.className = "celebration-btn";
-   btn.onclick = openCelebration;
-container.appendChild(btn);
-}
- 
+
+    // 🎉 Show celebration button when all 5 letters are unlocked
+    if (Object.keys(unlockedLetters).length === 5) {
+        const btn = document.createElement('button');
+        btn.textContent = '🎉 Tap for a Surprise 🎉';
+        btn.className = 'celebration-btn';
+        btn.onclick = openCelebration;
+        container.appendChild(btn);
+    }
 
     let unlockedCount = Object.keys(unlockedLetters).length;
-    document.getElementById('dayCounter').textContent = unlockedCount + ' of ' + Math.min(currentDay, 5) + ' letters unlocked';
+    document.getElementById('dayCounter').textContent =
+        unlockedCount + ' of ' + Math.min(currentDay, 5) + ' letters unlocked';
 }
 
 function startGame(letter) {
