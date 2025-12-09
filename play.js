@@ -292,7 +292,7 @@ window.closeLetter = closeLetter
 // 🎉 Open Celebration
 export function openCelebration() {
     // 🎵 Play birthday music
-    const audio = document.getElementById("birthdayMusic");
+    const audio = document.getElementById("bgMusic");
     if (audio) {
         audio.currentTime = 0;
         audio.play().catch(() => {
