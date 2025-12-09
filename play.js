@@ -72,7 +72,7 @@ if (Object.keys(unlockedLetters).length === 5) {
     btn.className = "celebration-btn";
    btn.onclick = openCelebration;
 container.appendChild(btn);
-
+}
  
 
     let unlockedCount = Object.keys(unlockedLetters).length;
