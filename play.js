@@ -291,6 +291,25 @@ window.openLetter = openLetter
 window.closeLetter = closeLetter
 // 🎉 Open Celebration
 export function openCelebration() {
+    // 🎵 Play birthday music
+    const audio = document.getElementById("birthdayMusic");
+    if (audio) {
+        audio.currentTime = 0;
+        audio.play().catch(() => {
+            console.log("Autoplay blocked, user gesture required.");
+        });
+    }
+
+    document.getElementById('mainView').style.display = 'none';
+    document.getElementById('letterView').style.display = 'none';
+    document.getElementById('celebrationView').style.display = 'block';
+
+    // Start all effects
+    startConfettiFireworks();
+    startFloatingHearts();
+    playMusic();
+}
+
     document.getElementById('mainView').style.display = 'none';
     document.getElementById('letterView').style.display = 'none';
     document.getElementById('celebrationView').style.display = 'block';
